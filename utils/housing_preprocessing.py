@@ -69,7 +69,7 @@ default_num_pipeline = make_pipeline( # Default pipeline for numerical features
     StandardScaler()
 )
 
-def get_preprocessing_pipeline(n_clusters=76, gamma=1.0):
+def get_preprocessing_pipeline(n_clusters, gamma=1.0):
     """
     Returns a preprocessing pipeline configured for housing data
 

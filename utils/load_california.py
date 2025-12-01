@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 
 RANDOM_STATE = 42
 
-def load_housing_data(filepath="../data/housing.csv",
+def load_housing_data(filepath="./data/housing.csv",
                       test_size=0.2,
                       random_state=RANDOM_STATE) -> tuple[pd.Series, pd.Series, pd.Series, pd.Series]:
     
