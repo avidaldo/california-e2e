@@ -1,33 +1,73 @@
-# California Housing Prices
-## End-to-End Machine Learning Project
+# California Housing Prices — an end-to-end machine learning project
 
-This notebook is an adaptation of the [original by *Aurélien Gerón*](https://github.com/ageron/handson-ml3/blob/main/02_end_to_end_machine_learning_project.ipynb), from [the second chapter](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/ch02.html) of his book: [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3rd Edition. Aurélien Géron](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/)
+This project is an adaptation of the [original by *Aurélien Géron*](https://github.com/ageron/handson-ml3/blob/main/02_end_to_end_machine_learning_project.ipynb), from [the second chapter](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/ch02.html) of his book [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3rd Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/).
 
-This project demonstrates an end-to-end machine learning workflow using the California Housing Prices dataset. The goal is to predict housing prices based on various features such as location, number of rooms, and population.
+The goal is to predict the median house value of each California district from features such as
+location, number of rooms, population and median income. It is a classic dataset for regression
+and a paradigmatic example of a **supervised learning regression** problem, used here to walk
+through the whole process: from data loading and exploration to model training, tuning and
+evaluation.
 
-It's a classic dataset for regression tasks and is widely used for educational purposes in machine learning. The project is structured to guide you through the entire process, from data loading and exploration to model training and evaluation; and it is a paradigmatic example of a **supervised learning regression** problem.
+## Two tracks
 
+The material is split in two folders that serve different purposes:
 
+| Folder | What it is | How to read it |
+|---|---|---|
+| [`workflow/`](workflow/) | **Only the steps applied to this problem**, in order, with the minimum explanation needed to follow them. Nothing is done twice or "the wrong way first". | Sequentially, `01` → `08`. Each step links the note that explains the concept behind it. |
+| [`notes/`](notes/) | **One concept per notebook**: the explanations, alternatives, and small examples (the manual split, the imputation and encoding options, the leakage mistakes, grid vs. randomized search...). Most use the California data, but none depends on the workflow. | In any order, when a workflow step links to them or when a concept needs a refresher. |
 
-## Notebooks
+The previous, single-track version of the notebooks is kept in [`legacy/`](legacy/) for reference.
 
-1. [**Framing the Problem**](e2e010_framing.ipynb) — Problem definition, first look at the data, and performance metrics
-2. [**Exploratory Data Analysis (EDA)**](e2e020_eda.ipynb) — Data visualization, correlations, and outlier analysis
-3. [**Train/Test Split**](e2e025_train_test.ipynb) — Random and stratified sampling strategies
-4. [**Feature Engineering**](e2e030_feature_engineering.ipynb) — Creating new features from existing ones
+## Workflow
 
-### Preprocessing
-5. [**Missing Values**](e2e041_missing.ipynb) — Handling unavailable data with imputation strategies
-6. [**Categorical Variables**](e2e042_categorical.ipynb) — Ordinal and one-hot encoding
-7. [**Feature Scaling**](e2e043_scaling.ipynb) — Normalization, standardization, and heavy-tailed distributions
+1. [Framing the problem](workflow/01_framing.ipynb) — first look at the data, problem definition, performance measure
+2. [Exploratory data analysis](workflow/02_eda.ipynb) — geographic plots, correlations, capped values
+3. [Train/test split](workflow/03_train_test_split.ipynb) — stratified split, consolidated in `utils/load_california.py`
+4. [Feature engineering decisions](workflow/04_feature_engineering.ipynb) — ratios, logarithms, geographic clusters
+5. [Preprocessing pipeline](workflow/05_preprocessing_pipeline.ipynb) — the `ColumnTransformer`, consolidated in `utils/housing_preprocessing.py`
+6. [Model selection](workflow/06_model_selection.ipynb) — linear regression vs. decision tree vs. random forest with cross-validation
+7. [Hyperparameter tuning](workflow/07_hyperparameter_tuning.ipynb) — two rounds of randomized search; final evaluation on the test set
+8. [Neural network](workflow/08_neural_network.ipynb) — regression with PyTorch, compared with the tuned random forest
 
-### Pipelines & Transformers
-8. [**Pipelines**](e2e050_pipelines.ipynb) — Building preprocessing pipelines with scikit-learn
-9. [**Custom Transformers**](e2e051_custom_transformers.ipynb) — Creating custom transformers for pipelines
-10. [**Spatial Clustering**](e2e060_spatial_clustering.ipynb) — Handling geographic coordinates with K-means and RBF kernels
+## Notes
 
-### Model Training & Evaluation
-11. [**Model Evaluation**](e2e070_model_evaluation.ipynb) — Training models, cross-validation, and comparing performance
-12. [**Hyperparameter Optimization**](e2e080_hyperparameters.ipynb) — Grid search and randomized search
-13. [**Hyperparameter Tuning (Practice)**](e2e081_hyperparameters2.ipynb) — Hands-on hyperparameter tuning exercise
-14. [**Neural Networks**](e2e090_neural_network/e2e090_neural_network.ipynb) — Regression with PyTorch
+**Framing and evaluation**
+- [Regression metrics: RMSE and MAE](notes/regression_metrics.ipynb)
+
+**Understanding the data**
+- [Looking for correlations](notes/correlation.ipynb)
+- [Outliers and capped values](notes/outliers.ipynb)
+- [Feature engineering: combining attributes](notes/feature_engineering.ipynb)
+
+**Splitting and validation**
+- [Training and test sets](notes/train_test_split.ipynb)
+- [Stratified sampling](notes/stratified_sampling.ipynb)
+- [Data leakage](notes/data_leakage.ipynb)
+- [Cross-validation](notes/cross_validation.ipynb)
+
+**Preprocessing**
+- [Missing values](notes/missing_values.ipynb)
+- [Encoding categorical features](notes/categorical_encoding.ipynb)
+- [Feature scaling](notes/feature_scaling.ipynb)
+- [Heavy-tailed distributions](notes/heavy_tailed_distributions.ipynb)
+
+**The scikit-learn API**
+- [Types of estimators](notes/sklearn_estimators.ipynb)
+- [Pipelines](notes/pipelines.ipynb)
+- [Custom transformers](notes/custom_transformers.ipynb)
+
+**Feature construction**
+- [Handling geographic coordinates](notes/geographic_features.ipynb)
+
+**Model tuning**
+- [Hyperparameter search](notes/hyperparameter_search.ipynb)
+
+## Running the notebooks
+
+The notebooks use relative paths (`../data/housing.csv`, `../img/`), so run each one with its own
+folder as the working directory, which is what Jupyter and VS Code do by default. The workflow
+notebooks import the shared code from `workflow/utils/`; the notes are self-contained.
+
+Dependencies: pandas, NumPy, Matplotlib, seaborn, scikit-learn ≥ 1.4, SciPy, Pillow and, for the
+last workflow step, PyTorch.

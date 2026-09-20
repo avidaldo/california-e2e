@@ -4,9 +4,9 @@ from sklearn.model_selection import train_test_split
 
 RANDOM_STATE = 42
 
-def load_housing_data(filepath="./data/housing.csv",
+def load_housing_data(filepath="../data/housing.csv",
                       test_size=0.2,
-                      random_state=RANDOM_STATE) -> tuple[pd.Series, pd.Series, pd.Series, pd.Series]:
+                      random_state=RANDOM_STATE) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
     
     housing = pd.read_csv(filepath)
     
@@ -27,4 +27,4 @@ def load_housing_data(filepath="./data/housing.csv",
     y_test = strat_test_set["median_house_value"].copy()
     
     
-    return X_train, X_test, y_train, y_test 
+    return X_train, X_test, y_train, y_test
