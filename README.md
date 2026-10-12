@@ -2,11 +2,7 @@
 
 This project is an adaptation of the [original by *Aurélien Géron*](https://github.com/ageron/handson-ml3/blob/main/02_end_to_end_machine_learning_project.ipynb), from [the second chapter](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/ch02.html) of his book [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3rd Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/).
 
-The goal is to predict the median house value of each California district from features such as
-location, number of rooms, population and median income. It is a classic dataset for regression
-and a paradigmatic example of a **supervised learning regression** problem, used here to walk
-through the whole process: from data loading and exploration to model training, tuning and
-evaluation.
+The goal is to predict the median house value of each California district from features such as location, number of rooms, population and median income. It is a classic dataset for regression and a paradigmatic example of a **supervised learning regression** problem, used here to walk through the whole process: from data loading and exploration to model training, tuning and evaluation.
 
 ## Two tracks
 
@@ -17,7 +13,7 @@ The material is split in two folders that serve different purposes:
 | [`workflow/`](workflow/) | **Only the steps applied to this problem**, in order, with the minimum explanation needed to follow them. Nothing is done twice or "the wrong way first". | Sequentially, `01` → `08`. Each step links the note that explains the concept behind it. |
 | [`notes/`](notes/) | **One concept per notebook**: the explanations, alternatives, and small examples (the manual split, the imputation and encoding options, the leakage mistakes, grid vs. randomized search...). Most use the California data, but none depends on the workflow. | In any order, when a workflow step links to them or when a concept needs a refresher. |
 
-The previous, single-track version of the notebooks is kept in [`legacy/`](legacy/) for reference.
+The notes can also be read on their own, without the workflow, as a reference on data preparation, validation and the scikit-learn API.
 
 ## Workflow
 
@@ -65,9 +61,6 @@ The previous, single-track version of the notebooks is kept in [`legacy/`](legac
 
 ## Running the notebooks
 
-The notebooks use relative paths (`../data/housing.csv`, `../img/`), so run each one with its own
-folder as the working directory, which is what Jupyter and VS Code do by default. The workflow
-notebooks import the shared code from `workflow/utils/`; the notes are self-contained.
+The notebooks use relative paths (`../data/housing.csv`, `../img/`), so run each one with its own folder as the working directory, which is what Jupyter and VS Code do by default. The workflow notebooks import the shared code from `workflow/utils/`; the notes are self-contained.
 
-Dependencies: pandas, NumPy, Matplotlib, seaborn, scikit-learn ≥ 1.4, SciPy, Pillow and, for the
-last workflow step, PyTorch.
+Dependencies: pandas, NumPy, Matplotlib, seaborn, scikit-learn ≥ 1.4, SciPy, Pillow and, for the last workflow step, PyTorch.

@@ -1,9 +1,6 @@
 # Notes: one concept per notebook
 
-Independent notebooks that explain a single concept each, with the alternatives and the small
-examples that the [workflow](../workflow/) deliberately leaves out. Most use the California
-housing data (`../data/housing.csv`) because it is at hand, but none depends on the workflow code.
-Read them in any order.
+Independent notebooks that explain a single concept each, with the alternatives and the small examples that the [workflow](../workflow/) deliberately leaves out. Most use the California housing data (`../data/housing.csv`) because it is at hand, but none depends on the workflow code. Read them in any order.
 
 **Framing and evaluation**
 - [Regression metrics: RMSE and MAE](regression_metrics.ipynb) — metrics vs. loss functions; why RMSE penalizes large errors
